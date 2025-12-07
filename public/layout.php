@@ -27,14 +27,14 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
                 theme: {
                     extend: {
                         colors: {
-                            brand: '#10a37f',
-                            surface: '#f6f8fa',
+                            brand: '#16a34a',
+                            surface: '#ffffff',
                         },
                         fontFamily: {
                             sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
                         },
                         boxShadow: {
-                            subtle: '0 12px 30px rgba(15, 23, 42, 0.08)',
+                            subtle: '0 4px 12px rgba(15, 23, 42, 0.05)',
                         },
                     },
                 },
@@ -45,7 +45,7 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
         <header class="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur">
             <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
                 <div class="flex items-center gap-3 text-xl font-semibold text-slate-900">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-white shadow-subtle">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900">
                         <span class="text-lg">C</span>
                     </div>
                     <div class="leading-tight">
@@ -133,7 +133,7 @@ function render_errors(array $errors): void
         return;
     }
     ?>
-    <div class="mb-4 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 shadow-sm">
+    <div class="mb-4 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
         <div class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-red-100 text-base">&#9888;</div>
         <ul class="space-y-1">
             <?php foreach ($errors as $error): ?>
@@ -150,7 +150,7 @@ function render_success(?string $message): void
         return;
     }
     ?>
-    <div class="mb-4 flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 shadow-sm">
+    <div class="mb-4 flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
         <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-base">&#10003;</div>
         <span><?= htmlspecialchars($message) ?></span>
     </div>

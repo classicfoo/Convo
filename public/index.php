@@ -40,7 +40,7 @@ render_header($user, 'Dashboard - Convo');
                 <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Role</p>
                 <div class="mt-3 flex items-center justify-between">
                     <div class="text-lg font-semibold text-slate-900"><?= htmlspecialchars(ucfirst($user['role'])) ?></div>
-                    <span class="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white"><?= htmlspecialchars($user['username']) ?></span>
+                    <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-800"><?= htmlspecialchars($user['username']) ?></span>
                 </div>
                 <p class="mt-2 text-sm text-slate-500">Use Admin to manage teammates if you have permissions.</p>
             </div>

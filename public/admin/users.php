@@ -35,14 +35,14 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 render_header($user, 'User Management - Convo');
 ?>
 <div class="space-y-8">
-    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-subtle">
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-6 py-4">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">User onboarding</p>
                 <h1 class="text-xl font-semibold text-slate-900">Create a new teammate</h1>
-                <p class="text-sm text-slate-600">Invite collaborators with a neutral, modern experience.</p>
+                <p class="text-sm text-slate-600">Invite collaborators with a bright, lightweight experience.</p>
             </div>
-            <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Admin mode</span>
+            <span class="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">Admin mode</span>
         </div>
 
         <div class="px-6 py-6">
@@ -53,25 +53,25 @@ render_header($user, 'User Management - Convo');
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token()) ?>" />
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-slate-700" for="display_name">Display name</label>
-                    <input class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-slate-900 shadow-inner focus:border-brand focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/30" type="text" id="display_name" name="display_name" required />
+                    <input class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30" type="text" id="display_name" name="display_name" required />
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-slate-700" for="username">Username</label>
-                    <input class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-slate-900 shadow-inner focus:border-brand focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/30" type="text" id="username" name="username" required />
+                    <input class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30" type="text" id="username" name="username" required />
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-slate-700" for="password">Temporary password</label>
-                    <input class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-slate-900 shadow-inner focus:border-brand focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/30" type="text" id="password" name="password" required />
+                    <input class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30" type="text" id="password" name="password" required />
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-slate-700" for="role">Role</label>
-                    <select class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-slate-900 shadow-inner focus:border-brand focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/30" id="role" name="role">
+                    <select class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30" id="role" name="role">
                         <option value="user">User</option>
                         <option value="admin">Admin</option>
                     </select>
                 </div>
                 <div class="md:col-span-2 flex justify-end">
-                    <button class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-subtle transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand/40" type="submit">
+                    <button class="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-brand/40" type="submit">
                         <span class="text-lg">＋</span>
                         Create user
                     </button>
@@ -80,13 +80,13 @@ render_header($user, 'User Management - Convo');
         </div>
     </div>
 
-    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-subtle">
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
         <div class="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-6 py-4">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Directory</p>
                 <h2 class="text-lg font-semibold text-slate-900">Existing users</h2>
             </div>
-            <div class="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">Total: <?= count($users) ?></div>
+            <div class="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-800">Total: <?= count($users) ?></div>
         </div>
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-slate-200 text-sm">
