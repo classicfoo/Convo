@@ -20,14 +20,14 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
                 theme: {
                     extend: {
                         colors: {
-                            brand: '#0ea5e9',
+                            brand: '#16a34a',
                             surface: '#ffffff',
                         },
                         fontFamily: {
                             sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
                         },
                         boxShadow: {
-                            soft: '0 6px 18px rgba(15, 23, 42, 0.04)',
+                            subtle: '0 4px 12px rgba(15, 23, 42, 0.05)',
                         },
                     },
                 },
@@ -35,10 +35,10 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
         </script>
     </head>
     <body class="min-h-screen bg-surface text-slate-900">
-        <header class="sticky top-0 z-10 border-b border-slate-200 bg-white">
+        <header class="sticky top-0 z-10 border-b border-slate-200 bg-white/95 backdrop-blur">
             <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
                 <div class="flex items-center gap-3 text-xl font-semibold text-slate-900">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-900">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900">
                         <span class="text-lg">C</span>
                     </div>
                     <div class="leading-tight">
@@ -49,18 +49,18 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
                 <nav class="flex items-center gap-2 text-sm font-medium text-slate-700">
                     <?php if ($user !== null): ?>
                         <?php $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); ?>
-                        <a href="/index.php" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 <?= $currentPath === '/index.php' ? 'border border-slate-200 bg-slate-50 text-slate-900' : '' ?>">
-                            <span class="h-2 w-2 rounded-full <?= $currentPath === '/index.php' ? 'bg-slate-900' : 'bg-slate-300' ?>"></span>
+                        <a href="/index.php" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 <?= $currentPath === '/index.php' ? 'bg-slate-100 text-slate-900 border border-slate-200' : 'border border-transparent' ?>">
+                            <span class="h-2 w-2 rounded-full <?= $currentPath === '/index.php' ? 'bg-brand' : 'bg-slate-300' ?>"></span>
                             Home
                         </a>
                         <?php if ($is_admin): ?>
-                            <a href="/admin/users.php" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 <?= $currentPath === '/admin/users.php' ? 'border border-slate-200 bg-slate-50 text-slate-900' : '' ?>">
-                                <span class="h-2 w-2 rounded-full <?= $currentPath === '/admin/users.php' ? 'bg-slate-900' : 'bg-slate-300' ?>"></span>
+                            <a href="/admin/users.php" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 <?= $currentPath === '/admin/users.php' ? 'bg-slate-100 text-slate-900 border border-slate-200' : 'border border-transparent' ?>">
+                                <span class="h-2 w-2 rounded-full <?= $currentPath === '/admin/users.php' ? 'bg-brand' : 'bg-slate-300' ?>"></span>
                                 Users
                             </a>
                         <?php endif; ?>
                         <div class="hidden items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 sm:flex">
-                            <div class="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-xs font-bold text-slate-900">
+                            <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-xs font-bold text-white">
                                 <?= strtoupper(substr($user['display_name'], 0, 2)) ?>
                             </div>
                             <div class="leading-tight">
@@ -68,13 +68,13 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
                                 <div class="text-xs text-slate-500"><?= htmlspecialchars(ucfirst($user['role'])) ?></div>
                             </div>
                         </div>
-                        <a href="/logout.php" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-slate-700 transition hover:border-slate-300 hover:bg-slate-50">
+                        <a href="/logout.php" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-700 transition hover:border-slate-300 hover:bg-slate-50">
                             <span class="text-lg">↗</span>
                             Logout
                         </a>
                     <?php else: ?>
-                        <a href="/login.php" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-slate-900 transition hover:bg-slate-50">
-                            <span class="h-2 w-2 rounded-full bg-slate-900"></span>
+                        <a href="/login.php" class="inline-flex items-center gap-2 rounded-lg bg-brand px-3 py-2 text-white shadow-sm transition hover:bg-emerald-600">
+                            <span class="h-2 w-2 rounded-full bg-white/90"></span>
                             Login
                         </a>
                     <?php endif; ?>
