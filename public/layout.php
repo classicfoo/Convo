@@ -20,14 +20,14 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
                 theme: {
                     extend: {
                         colors: {
-                            brand: '#0f172a',
-                            surface: '#ffffff',
+                            brand: '#10a37f',
+                            surface: '#f6f8fa',
                         },
                         fontFamily: {
                             sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
                         },
                         boxShadow: {
-                            subtle: '0 10px 30px rgba(15, 23, 42, 0.04)',
+                            subtle: '0 12px 30px rgba(15, 23, 42, 0.08)',
                         },
                     },
                 },
@@ -35,10 +35,10 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
         </script>
     </head>
     <body class="min-h-screen bg-surface text-slate-900">
-        <header class="sticky top-0 z-10 border-b border-slate-200 bg-white/95">
+        <header class="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur">
             <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
                 <div class="flex items-center gap-3 text-xl font-semibold text-slate-900">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-white shadow-subtle">
                         <span class="text-lg">C</span>
                     </div>
                     <div class="leading-tight">
@@ -49,18 +49,18 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
                 <nav class="flex items-center gap-2 text-sm font-medium text-slate-700">
                     <?php if ($user !== null): ?>
                         <?php $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); ?>
-                        <a href="/index.php" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 <?= $currentPath === '/index.php' ? 'bg-slate-100 text-slate-900 border border-slate-200' : '' ?>">
-                            <span class="h-2 w-2 rounded-full <?= $currentPath === '/index.php' ? 'bg-slate-900' : 'bg-slate-400' ?>"></span>
+                        <a href="/index.php" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 <?= $currentPath === '/index.php' ? 'bg-slate-900 text-white shadow-subtle' : '' ?>">
+                            <span class="h-2 w-2 rounded-full <?= $currentPath === '/index.php' ? 'bg-white' : 'bg-slate-400' ?>"></span>
                             Home
                         </a>
                         <?php if ($is_admin): ?>
-                            <a href="/admin/users.php" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 <?= $currentPath === '/admin/users.php' ? 'bg-slate-100 text-slate-900 border border-slate-200' : '' ?>">
-                                <span class="h-2 w-2 rounded-full <?= $currentPath === '/admin/users.php' ? 'bg-slate-900' : 'bg-slate-400' ?>"></span>
+                            <a href="/admin/users.php" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-slate-100 <?= $currentPath === '/admin/users.php' ? 'bg-slate-900 text-white shadow-subtle' : '' ?>">
+                                <span class="h-2 w-2 rounded-full <?= $currentPath === '/admin/users.php' ? 'bg-white' : 'bg-slate-400' ?>"></span>
                                 Users
                             </a>
                         <?php endif; ?>
-                        <div class="hidden items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 sm:flex">
-                            <div class="flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-xs font-bold text-slate-900">
+                        <div class="hidden items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm sm:flex">
+                            <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-xs font-bold text-white">
                                 <?= strtoupper(substr($user['display_name'], 0, 2)) ?>
                             </div>
                             <div class="leading-tight">
@@ -73,8 +73,8 @@ function render_header(?array $user, string $title = 'Convo CRM'): void
                             Logout
                         </a>
                     <?php else: ?>
-                        <a href="/login.php" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 transition hover:bg-slate-50">
-                            <span class="h-2 w-2 rounded-full bg-slate-900"></span>
+                        <a href="/login.php" class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-3 py-2 text-white shadow-subtle transition hover:bg-slate-800">
+                            <span class="h-2 w-2 rounded-full bg-white"></span>
                             Login
                         </a>
                     <?php endif; ?>
@@ -100,7 +100,7 @@ function render_errors(array $errors): void
         return;
     }
     ?>
-    <div class="mb-4 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+    <div class="mb-4 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 shadow-sm">
         <div class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-red-100 text-base">&#9888;</div>
         <ul class="space-y-1">
             <?php foreach ($errors as $error): ?>
@@ -117,7 +117,7 @@ function render_success(?string $message): void
         return;
     }
     ?>
-    <div class="mb-4 flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+    <div class="mb-4 flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 shadow-sm">
         <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-base">&#10003;</div>
         <span><?= htmlspecialchars($message) ?></span>
     </div>
